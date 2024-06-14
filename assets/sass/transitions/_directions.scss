@@ -1,0 +1,7 @@
+.start-to-end-enter-active, .start-to-end-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.start-to-end-enter-from, .start-to-end-leave-to {
+  transform: translateX(100%);
+}

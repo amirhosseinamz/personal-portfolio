@@ -1,3 +1,15 @@
 {
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "findMeIn": "find me in",
+  "fullName": "AmirHossein Amouzgar",
+  "role": "Front-end Developer",
+  "header": {
+    "homeTab": "_hello",
+    "aboutMeTab": "_about-me",
+    "projectsTab": "_projects",
+    "contactMeTab": "_contact-me"
+  },
+  "mainPage": {
+    "greeting": "Hi all. I am"
+  }
 }
