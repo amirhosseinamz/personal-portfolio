@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface PropsFace {
-  mode: 'outline' | 'dark' | 'orange';
+  mode?: 'outline' | 'dark' | 'orange';
 }
 
 const props = withDefaults(defineProps<PropsFace>(), {

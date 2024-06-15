@@ -49,7 +49,7 @@ export default defineNuxtConfig({
         langDir: 'locales/',
         vueI18n: './i18n.config.ts'
     },
-    css: ['~/assets/sass/_main.scss'],
+    css: ['~/assets/sass/_main.scss', 'highlight.js/styles/atom-one-dark.css',],
     postcss: {
         plugins: {
             tailwindcss: {},

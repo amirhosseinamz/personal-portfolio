@@ -43,12 +43,34 @@ import BaseButton from "~/components/base/BaseButton.vue";
         skip
       </BaseButton>
     </div>
+    <div class="screw-1">
+      <svg width="7" height="6" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.960938 5.56574L6.49951 0.976349M0.960938 0.976349L6.49951 5.56574" stroke="#114944"/>
+      </svg>
+
+    </div>
+    <div class="screw-2">
+      <svg width="7" height="6" viewBox="0 0 7 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.960938 5.56574L6.49951 0.976349M0.960938 0.976349L6.49951 5.56574" stroke="#114944"/>
+      </svg>
+
+    </div>
+    <div class="screw-3">
+      <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.460938 5.72577L5.99951 1.13638M0.460938 1.13638L5.99951 5.72577" stroke="#093430"/>
+      </svg>
+    </div>
+    <div class="screw-4">
+      <svg width="7" height="7" viewBox="0 0 7 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.960938 5.72577L6.49951 1.13638M0.960938 1.13638L6.49951 5.72577" stroke="#163355"/>
+      </svg>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .gamepad {
-  @apply w-[510px] rounded-lg h-[475px] p-[34px] border border-[#0c1616] flex items-start gap-6 relative z-[2];
+  @apply w-[510px] max-xl:w-[470px] rounded-lg h-[475px] p-[34px] max-xl:p-5 border border-[#0c1616] flex items-start gap-6 max-xl:gap-4 relative z-[2];
   background: rgb(23, 85, 83);
   background: linear-gradient(202deg, rgba(23, 85, 83, 1) 0%, rgba(67, 217, 173, 0.13489145658263302) 50%);
 
@@ -77,6 +99,37 @@ import BaseButton from "~/components/base/BaseButton.vue";
         @apply absolute w-[20.6px] h-[20.6px] rounded-full bg-accent-2/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
       }
     }
+  }
+}
+
+.screw {
+  &-1, &-2, &-3, &-4 {
+    @apply absolute w-[13px] h-[13px] rounded-full flex items-center justify-center;
+    box-shadow: 2px 2px 4px 0 #0D4341, inset 0 1px 2px 0 #1F8177;
+    background: rgb(25, 108, 106);
+    background: radial-gradient(circle, rgba(25, 108, 106, 1) 15%, rgba(17, 75, 74, 1) 100%);
+  }
+
+  &-1 {
+    @apply start-3 max-xl:start-1 top-3 max-xl:top-1;
+  }
+
+  &-2 {
+    @apply end-3 max-xl:end-1 top-3 max-xl:top-1;
+  }
+
+  &-3 {
+    @apply start-3 max-xl:start-1 bottom-3 max-xl:bottom-1 border border-[#093430];
+    box-shadow: 2px 2px 4px 0 #092D32, inset 0 1px 2px 0 #16645C;
+    background: rgb(22, 76, 81);
+    background: radial-gradient(circle, rgba(22, 76, 81, 1) 15%, rgba(13, 58, 64, 1) 100%);
+  }
+
+  &-4 {
+    @apply end-3 max-xl:end-1 bottom-3 max-xl:bottom-1;
+    box-shadow: 2px 2px 4px 0 #122C4E, inset 0 1px 2px 0 #2C588D;
+    background: rgb(35, 75, 124);
+    background: radial-gradient(circle, rgba(35, 75, 124, 1) 15%, rgba(18, 46, 79, 1) 100%);
   }
 }
 </style>

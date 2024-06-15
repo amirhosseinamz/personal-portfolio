@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper content-wrapper">
     <Header/>
-    <div class="min-h-[70vh] page-content">
+    <div class="page-content">
       <slot></slot>
     </div>
     <Footer class="max-lg:hidden"/>
@@ -19,11 +19,11 @@ import Footer from "~/components/layout/Footer.vue";
 //  @apply border border-line-1 bg-primary-300 rounded-lg w-auto h-full m-[70px];
 //}
 .content-wrapper {
-  @apply border border-line-1 bg-primary-300 rounded-lg h-full mt-[70px] overflow-hidden;
+  @apply border border-line-1 bg-primary-300 rounded-lg h-full mt-[70px] max-lg:mt-4 overflow-hidden;
 }
 
 .page-content {
-  @apply relative rounded-bl-lg rounded-br-lg flex flex-col justify-center;
+  @apply relative rounded-bl-lg rounded-br-lg flex flex-col justify-center py-4 max-lg:h-[calc(100vh_-_90px)];
 }
 
 .wrapper {
