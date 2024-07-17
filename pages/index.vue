@@ -1,6 +1,6 @@
 <template>
   <div
-      class="flex justify-center items-center gap-[130px] max-2xl:gap-[60px] max-xl:gap-[30px] max-lg:gap-0 my-[86px] max-lg:mx-10 max-xs:mx-6">
+      class="flex justify-center items-center gap-[130px] max-2xl:gap-[60px] max-xl:gap-[30px] max-lg:gap-0 my-auto max-lg:mx-10 max-xs:mx-6">
     <div class="flex flex-col my-auto max-2xl:max-w-[40%] max-lg:max-w-[100%]">
       <span class="text-light-100 text-lg block mb-3 max-xl:mb-2">
         {{ $t('mainPage.greeting') }}
@@ -16,7 +16,7 @@
           {{ $t('role') }}
         </span>
       </div>
-      <div class="flex flex-col mt-20 max-lg:mt-[190px]">
+      <div class="flex flex-col mt-20 max-lg:mt-[310px] max-xs:mt-[260px]">
         <div class="flex flex-col gap-1">
           <span class="text-secondary-1 text-base max-lg:hidden">
             // Complete the game to continue

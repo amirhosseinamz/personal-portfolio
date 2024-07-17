@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import HamburgerMenu from "~/components/layout/HamburgerMenu.vue";
 import {RoutesEnum} from "~/enums/routes.enum";
+import {useRoute} from "#app";
+
+const route = useRoute();
 
 const hamburgerMenuIsOpen = ref(false);
+
+onMounted(() => {
+  console.log(route.path)
+})
 </script>
 
 <template>
@@ -13,10 +20,18 @@ const hamburgerMenuIsOpen = ref(false);
         {{ $t('fullName') }}
       </div>
       <div class="navigation-menu">
-        <NuxtLink :to="RoutesEnum.HOME" class="navigation-menu_item active">{{ $t('header.homeTab') }}</NuxtLink>
-        <NuxtLink :to="RoutesEnum.ABOUT_ME" class="navigation-menu_item">{{ $t('header.aboutMeTab') }}</NuxtLink>
-        <NuxtLink :to="RoutesEnum.PROJECTS" class="navigation-menu_item">{{ $t('header.projectsTab') }}</NuxtLink>
-        <NuxtLink :to="RoutesEnum.CONTACT_ME" class="navigation-menu_item">{{ $t('header.contactMeTab') }}</NuxtLink>
+        <NuxtLink :to="RoutesEnum.HOME" class="navigation-menu_item" :class="{active: route.path === '/'}">
+          {{ $t('header.homeTab') }}
+        </NuxtLink>
+        <NuxtLink :to="RoutesEnum.ABOUT_ME" class="navigation-menu_item" :class="{active: route.path === '/about-me'}">
+          {{ $t('header.aboutMeTab') }}
+        </NuxtLink>
+        <NuxtLink :to="RoutesEnum.PROJECTS" class="navigation-menu_item" :class="{active: route.path === '/projects'}">
+          {{ $t('header.projectsTab') }}
+        </NuxtLink>
+        <NuxtLink :to="RoutesEnum.CONTACT_ME" class="navigation-menu_item"
+                  :class="{active: route.path === '/contact-me'}">{{ $t('header.contactMeTab') }}
+        </NuxtLink>
       </div>
       <div class="hamburger-icon" @click="hamburgerMenuIsOpen = !hamburgerMenuIsOpen">
         <div class="icon" :class="{'open': hamburgerMenuIsOpen}">
