@@ -3,6 +3,7 @@
   "findMeIn": "find me in",
   "fullName": "AmirHossein Amouzgar",
   "role": "Front-end Developer",
+  "details": "details",
   "header": {
     "homeTab": "_hello",
     "aboutMeTab": "_about-me",
@@ -11,5 +12,15 @@
   },
   "mainPage": {
     "greeting": "Hi all. I am"
+  },
+  "aboutMe": {
+    "bio": "bio",
+    "highSchool": "high-school",
+    "university": "university",
+    "codeSnippetShowcase": "Code snippet showcase",
+    "selectFileSentence": "Please select a file from files section"
+  },
+  "projects": {
+    "projects": "projects"
   }
 }

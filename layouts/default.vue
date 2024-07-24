@@ -23,7 +23,7 @@ import Footer from "~/components/layout/Footer.vue";
 }
 
 .page-content {
-  @apply relative rounded-bl-lg rounded-br-lg flex flex-col justify-center py-4 max-lg:h-[calc(100vh_-_90px)];
+  @apply relative rounded-bl-lg rounded-br-lg flex flex-col py-4 h-[calc(100vh_-_245px)] max-lg:h-[calc(100vh_-_90px)];
 }
 
 .wrapper {

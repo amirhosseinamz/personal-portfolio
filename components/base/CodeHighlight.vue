@@ -14,6 +14,9 @@ const props = defineProps({
     type: String,
     default: 'javascript',
   },
+  codeClass: {
+    type: String,
+  }
 })
 
 const codeRef = ref(null)
@@ -29,7 +32,7 @@ watch(() => props.code, highlightCode)
 </script>
 <template>
   <pre class="highlightjs">
-    <code :class="`language-${language}`" ref="codeRef">
+    <code :class="`language-${language} ${codeClass}`" ref="codeRef">
       {{ code }}
     </code>
   </pre>
@@ -38,5 +41,21 @@ watch(() => props.code, highlightCode)
 <style scoped>
 code {
   @apply bg-[inherit] !p-0;
+}
+
+::-webkit-scrollbar {
+  @apply h-2 border-l border-line-1;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary-1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary-1;
 }
 </style>
