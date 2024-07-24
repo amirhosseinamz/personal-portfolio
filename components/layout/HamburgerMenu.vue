@@ -1,26 +1,26 @@
 <script setup lang="ts">
 import Footer from "~/components/layout/Footer.vue";
-import {RoutesEnum} from "~/enums/routes.enum";
+import { RoutesEnum } from "~/enums/routes.enum";
+import { computed } from "#imports";
 
 const props = defineProps<{
   modelValue: boolean;
 }>();
 
 const emit = defineEmits<{
-  (event: 'update:modelValue', value: boolean): void;
+  (event: "update:modelValue", value: boolean): void;
 }>();
-
 
 const isOpen = computed({
   get() {
     return props.modelValue;
   },
   set(value) {
-    emit('update:modelValue', value);
+    emit("update:modelValue", value);
   },
 });
 const toggleMenu = () => {
-  emit('update:modelValue', !isOpen.value);
+  emit("update:modelValue", !isOpen.value);
 };
 </script>
 
@@ -29,19 +29,19 @@ const toggleMenu = () => {
     <div v-if="isOpen" class="hamburger-menu">
       <div class="navigation-menu">
         <NuxtLink :to="RoutesEnum.HOME" class="navigation-menu_item">
-          {{ $t('header.homeTab') }}
+          {{ $t("header.homeTab") }}
         </NuxtLink>
         <NuxtLink :to="RoutesEnum.ABOUT_ME" class="navigation-menu_item">
-          {{ $t('header.aboutMeTab') }}
+          {{ $t("header.aboutMeTab") }}
         </NuxtLink>
         <NuxtLink :to="RoutesEnum.PROJECTS" class="navigation-menu_item">
-          {{ $t('header.projectsTab') }}
+          {{ $t("header.projectsTab") }}
         </NuxtLink>
         <NuxtLink :to="RoutesEnum.CONTACT_ME" class="navigation-menu_item">
-          {{ $t('header.contactMeTab') }}
+          {{ $t("header.contactMeTab") }}
         </NuxtLink>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   </Transition>
 </template>

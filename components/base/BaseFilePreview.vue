@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import {FileFace, FolderFace} from "~/interfaces/files.interface";
+import { FileFace, FolderFace } from "~/interfaces/files.interface";
+import { computed } from "#imports";
 
 interface PropsFace {
   folders: FolderFace[];
 }
 
-const props = withDefaults(defineProps<PropsFace>(), {})
-const emit = defineEmits(['update:folders']);
+const props = withDefaults(defineProps<PropsFace>(), {});
+const emit = defineEmits(["update:folders"]);
 
 const selectedFile = computed<FileFace | undefined>(() => {
   for (const folder of props.folders) {
-    const file = folder.files?.find((f: FileFace) => f.status === 'open');
+    const file = folder.files?.find((f: FileFace) => f.status === "open");
     if (file) {
       return file;
     }
@@ -21,12 +22,12 @@ const selectedFile = computed<FileFace | undefined>(() => {
 const closeFile = () => {
   let folders = props.folders.map((folder: FolderFace) => {
     folder.files?.forEach((f: FileFace) => {
-      f.status = 'close';
+      f.status = "close";
     });
     return folder;
   });
-  emit('update:folders', folders);
-}
+  emit("update:folders", folders);
+};
 </script>
 
 <template>
@@ -37,31 +38,45 @@ const closeFile = () => {
           {{ selectedFile?.title }}
         </span>
         <div class="close-icon" @click="closeFile">
-          <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="11"
+            height="10"
+            viewBox="0 0 11 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
-                d="M5.34771 3.71879L9.06021 0.00628662L10.1207 1.06679L6.40821 4.77929L10.1207 8.49179L9.06021 9.55229L5.34771 5.83979L1.63521 9.55229L0.574707 8.49179L4.28721 4.77929L0.574707 1.06679L1.63521 0.00628662L5.34771 3.71879Z"
-                fill="#607B96"/>
+              d="M5.34771 3.71879L9.06021 0.00628662L10.1207 1.06679L6.40821 4.77929L10.1207 8.49179L9.06021 9.55229L5.34771 5.83979L1.63521 9.55229L0.574707 8.49179L4.28721 4.77929L0.574707 1.06679L1.63521 0.00628662L5.34771 3.71879Z"
+              fill="#607B96"
+            />
           </svg>
         </div>
       </div>
     </div>
-    <div class="content" :class="{'has-file': !!selectedFile}">
+    <div class="content" :class="{ 'has-file': !!selectedFile }">
       <template v-if="selectedFile">
         <div class="lines">
           <div class="number">
-            <template v-for="num in Array.from({ length: 40 }, (v, k) => k + 1)">
+            <template
+              v-for="num in Array.from({ length: 40 }, (v, k) => k + 1)"
+            >
               {{ num }}
-              <br>
+              <br />
             </template>
           </div>
         </div>
         <div class="preview">
-          <div class="text-lg text-secondary-1 leading-7" v-html="selectedFile?.content">
-          </div>
+          <div
+            class="text-lg text-secondary-1 leading-7"
+            v-html="selectedFile?.content"
+          ></div>
         </div>
       </template>
-      <div v-else class="w-full h-full flex items-center justify-center px-4 text-center">
-        {{ $t('aboutMe.selectFileSentence') }}
+      <div
+        v-else
+        class="w-full h-full flex items-center justify-center px-4 text-center"
+      >
+        {{ $t("aboutMe.selectFileSentence") }}
       </div>
     </div>
   </div>
