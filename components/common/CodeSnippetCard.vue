@@ -106,7 +106,7 @@ https://jsonplaceholder.typicode.com/posts/1
   }
 
   &:deep(.code-text) {
-    @apply mt-[-56px] ms-6;
+    @apply -mt-6 ms-6;
   }
 }
 </style>
