@@ -1,17 +1,30 @@
 <script setup lang="ts">
+import BaseSpinner from "~/components/base/BaseSpinner.vue";
+import { ref } from "#imports";
+
 interface PropsFace {
-  mode?: 'outline' | 'dark' | 'orange';
+  mode?: "outline" | "dark" | "orange";
+  type?: "button" | "submit";
+  loading?: boolean;
 }
 
 const props = withDefaults(defineProps<PropsFace>(), {
-  mode: 'outline',
+  mode: "outline",
+  type: "button",
+  loading: false,
 });
-const emit = defineEmits(['click']);
+const emit = defineEmits(["click"]);
 </script>
 
 <template>
-  <button class="base-button" :class="[mode]" type="button" @click="emit('click')">
-    <slot></slot>
+  <button
+    class="base-button"
+    :class="[mode]"
+    :type="props.type"
+    @click="emit('click')"
+  >
+    <slot v-if="!props.loading"></slot>
+    <BaseSpinner v-else />
   </button>
 </template>
 
@@ -29,5 +42,15 @@ const emit = defineEmits(['click']);
   &.dark {
     @apply bg-primary-100 text-white;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

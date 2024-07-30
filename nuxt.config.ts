@@ -1,15 +1,23 @@
 import i18nConfig from "./i18n.config";
 import { defineNuxtConfig } from "nuxt/config";
+import dotenv from "dotenv";
+import vue from "@vitejs/plugin-vue";
+import svgLoader from "vite-svg-loader";
 
+dotenv.config();
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  runtimeConfig: {
+    gmailUser: process.env.GMAIL_USER,
+    gmailPass: process.env.GMAIL_PASS,
+  },
   typescript: {
     typeCheck: true,
     strict: true,
     shim: false,
   },
   plugins: [{ src: "~/plugins/vue3-text-clamp.client.ts", mode: "client" }],
-  modules: ["@nuxtjs/i18n"],
+  modules: ["@nuxtjs/i18n", "@pinia/nuxt"],
   app: {
     head: {
       link: [
@@ -47,7 +55,7 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: "en",
-    lazy: true,
+    lazy: false,
     langDir: "locales/",
     vueI18n: "./i18n.config.ts",
   },
@@ -60,5 +68,8 @@ export default defineNuxtConfig({
   },
   imports: {
     autoImport: true,
+  },
+  vite: {
+    plugins: [require("vite-svg-loader")()],
   },
 });

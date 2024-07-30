@@ -33,7 +33,7 @@
         </div>
       </div>
       <CodeHighlight
-        class="mt-[-4rem]"
+        class="max-lg:mt-[-2rem]"
         :code="codeSnippet"
         language="javascript"
       />

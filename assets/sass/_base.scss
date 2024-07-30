@@ -33,3 +33,20 @@ input, textarea {
     outline: none;
   }
 }
+
+
+::-webkit-scrollbar {
+  @apply xl:w-4 w-3 border-l border-line-1;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary-1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary-1;
+}
