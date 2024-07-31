@@ -76,7 +76,7 @@ onUnmounted(() => {
 <template>
   <div class="flex max-lg:flex-col -my-4 h-[inherit]">
     <div class="text-base max-md:text-sm text-white p-6 lg:hidden">
-      _about-me
+      {{ $t("aboutMe.pageTitle") }}
     </div>
     <div class="file-selection">
       <BaseAccordion

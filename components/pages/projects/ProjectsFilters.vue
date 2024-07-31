@@ -165,7 +165,7 @@ watch(
   &_item {
     @apply flex items-center;
     .icon {
-      @apply ms-5;
+      @apply ms-5 max-lg:ms-3;
     }
 
     .title {
