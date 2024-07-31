@@ -7,6 +7,7 @@ import BaseResizable from "~/components/base/BaseResizable.vue";
 import { SocialMediaEnum } from "~/enums/social-media.enum";
 import CodeHighlight from "~/components/base/CodeHighlight.vue";
 import SendMailForm from "~/components/pages/contact-me/SendMailForm.vue";
+import { BreakpointsEnum } from "~/enums/breakpoints.enum";
 
 interface FormDataFace {
   userName: string;
@@ -21,7 +22,8 @@ const formData = ref<FormDataFace>({
 });
 const formCode = computed(() => {
   return `
-const button = document.querySelector('#sendBtn');
+const button =
+  document.querySelector('#sendBtn');
 
 const message = {
   name: "${formData.value.userName.trim()}",
@@ -39,12 +41,35 @@ function formUpdate(data: FormDataFace) {
   formData.value.email = data.email;
   formData.value.message = data.message;
 }
+
+// Size Settings
+
+const windowWidth = ref();
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
+};
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  handleResize();
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
 
 <template>
-  <div class="flex -my-4 h-[inherit]">
+  <div class="flex max-lg:flex-col -my-4 h-[inherit]">
+    <div class="text-base max-md:text-sm text-white p-6 lg:hidden">
+      {{ $t("contactMe.pageTitle") }}
+    </div>
     <div class="contact-links">
-      <BaseAccordion :title="t('contactMe.contacts')" :opened-default="true">
+      <BaseAccordion
+        :theme="windowWidth > BreakpointsEnum.LG ? 'dark' : 'light'"
+        :title="t('contactMe.contacts')"
+        :opened-default="true"
+        class="max-lg:mb-[2px]"
+      >
         <div class="py-4">
           <NuxtLink
             :to="SocialMediaEnum.GMAIL"
@@ -90,8 +115,9 @@ function formUpdate(data: FormDataFace) {
         </div>
       </BaseAccordion>
       <BaseAccordion
+        :theme="windowWidth > BreakpointsEnum.LG ? 'dark' : 'light'"
         :title="t('contactMe.findMeAlsoIn')"
-        :opened-default="true"
+        :opened-default="windowWidth > BreakpointsEnum.LG"
       >
         <div class="py-4 flex flex-col gap-2">
           <NuxtLink
@@ -115,9 +141,10 @@ function formUpdate(data: FormDataFace) {
       </BaseAccordion>
     </div>
     <div
-      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] flex"
+      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] max-lg:w-full flex pb-6"
     >
       <BaseResizable
+        v-if="windowWidth > BreakpointsEnum.LG"
         :start-pane-min-width="300"
         :end-pane-min-width="300"
         start-pane-class="border-e border-line-1"
@@ -126,7 +153,7 @@ function formUpdate(data: FormDataFace) {
           <SendMailForm @update="formUpdate" />
         </template>
         <template #right>
-          <div class="mx-auto mt-[100px] ps-16">
+          <div class="mx-auto mt-[100px] ps-16 max-2xl:ps-6">
             <CodeHighlight
               :code="formCode"
               language="javascript"
@@ -135,12 +162,13 @@ function formUpdate(data: FormDataFace) {
           </div>
         </template>
       </BaseResizable>
+      <SendMailForm v-else @update="formUpdate" />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .contact-links {
-  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] shrink-0 border-e border-line-1;
+  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] max-lg:w-full shrink-0 lg:border-e border-line-1;
 }
 </style>

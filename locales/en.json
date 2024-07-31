@@ -35,6 +35,7 @@
     "enterYourMessage": "Enter your message",
     "emailSuccess": "Your email has been successfully sent to me.",
     "emailError": "There is a problem in sending email!",
-    "completeFormWarning": "Please complete the form!"
+    "completeFormWarning": "Please complete the form!",
+    "pageTitle": "_contact-me"
   }
 }

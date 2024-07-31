@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper content-wrapper">
     <Header />
-    <div class="page-content">
+    <div :class="['page-content', { 'is-index': isIndex }]">
       <slot></slot>
     </div>
     <Footer />
@@ -11,6 +11,14 @@
 <script lang="ts" setup>
 import Header from "~/components/layout/Header.vue";
 import Footer from "~/components/layout/Footer.vue";
+import { computed, useRoute } from "#imports";
+import { RoutesEnum } from "~/enums/routes.enum";
+
+const route = useRoute();
+
+const isIndex = computed(() => {
+  return route.path === RoutesEnum.HOME;
+});
 </script>
 
 <style lang="scss" scoped>
@@ -24,6 +32,9 @@ import Footer from "~/components/layout/Footer.vue";
   //@apply relative rounded-bl-lg rounded-br-lg flex flex-col py-4 h-[calc(100vh_-_245px)] max-lg:h-[calc(100vh_-_90px)];
   @apply relative rounded-bl-lg rounded-br-lg flex flex-col py-4 xl:h-[calc(100vh_-_245px)] h-[calc(100vh_-_109px)]
   max-lg:h-[calc(100vh_-_59px)] overflow-y-auto overflow-x-hidden;
+  &.is-index {
+    @apply overflow-y-hidden;
+  }
 }
 
 .wrapper {
