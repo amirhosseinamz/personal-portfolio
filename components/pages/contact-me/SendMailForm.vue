@@ -56,7 +56,7 @@ async function submitForm() {
 
 <template>
   <form
-    class="max-w-[370px] mx-auto mt-[100px] px-5"
+    class="lg:max-w-[370px] max-lg:w-full mx-auto mt-[100px] max-lg:mt-12 px-5"
     @submit.prevent="submitForm"
   >
     <BaseInput
