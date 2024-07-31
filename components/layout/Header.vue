@@ -25,28 +25,28 @@ onMounted(() => {
         <NuxtLink
           :to="RoutesEnum.HOME"
           class="navigation-menu_item"
-          :class="{ active: route.path === '/' }"
+          :class="{ active: route.path === RoutesEnum.HOME }"
         >
           {{ $t("header.homeTab") }}
         </NuxtLink>
         <NuxtLink
           :to="RoutesEnum.ABOUT_ME"
           class="navigation-menu_item"
-          :class="{ active: route.path === '/about-me' }"
+          :class="{ active: route.path === RoutesEnum.ABOUT_ME }"
         >
           {{ $t("header.aboutMeTab") }}
         </NuxtLink>
         <NuxtLink
           :to="RoutesEnum.PROJECTS"
           class="navigation-menu_item"
-          :class="{ active: route.path === '/projects' }"
+          :class="{ active: route.path === RoutesEnum.PROJECTS }"
         >
           {{ $t("header.projectsTab") }}
         </NuxtLink>
         <NuxtLink
           :to="RoutesEnum.CONTACT_ME"
           class="navigation-menu_item"
-          :class="{ active: route.path === '/contact-me' }"
+          :class="{ active: route.path === RoutesEnum.CONTACT_ME }"
           >{{ $t("header.contactMeTab") }}
         </NuxtLink>
       </div>

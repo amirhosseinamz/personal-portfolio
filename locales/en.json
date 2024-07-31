@@ -19,10 +19,13 @@
     "highSchool": "high-school",
     "university": "university",
     "codeSnippetShowcase": "Code snippet showcase",
-    "selectFileSentence": "Please select a file from files section"
+    "selectFileSentence": "Please select a file from files section",
+    "pageTitle": "_about-me"
   },
   "projects": {
-    "projects": "projects"
+    "projects": "projects",
+    "pageTitle": "_projects",
+    "filters": "filters"
   },
   "contactMe": {
     "contacts": "contacts",

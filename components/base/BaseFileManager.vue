@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FileFace, FolderFace } from "~/interfaces/files.interface";
-import { ref } from "#imports";
+import { onMounted, ref } from "#imports";
 import BaseIcon from "~/components/base/base-icon/BaseIcon.vue";
 
 interface PropsFace {
@@ -40,6 +40,10 @@ const selectFile = (folderId: any, fileId: any) => {
   });
   emit("update:folders", folders);
 };
+
+onMounted(() => {
+  openToggle(0);
+});
 </script>
 
 <template>

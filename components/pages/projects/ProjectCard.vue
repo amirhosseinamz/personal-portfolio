@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<PropsFace>(), {});
 </script>
 
 <template>
-  <div class="flex flex-col gap-[14px] w-full max-w-[380px]">
+  <div class="flex flex-col gap-[14px] w-full sm:max-w-[380px]">
     <div class="flex items-center">
       <span class="text-[#5565E8] text-base me-2.5 whitespace-nowrap"
         >Project {{ props.counter }}</span

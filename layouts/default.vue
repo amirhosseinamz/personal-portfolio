@@ -4,7 +4,7 @@
     <div class="page-content">
       <slot></slot>
     </div>
-    <Footer class="max-lg:hidden" />
+    <Footer />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ import Footer from "~/components/layout/Footer.vue";
 .page-content {
   //@apply relative rounded-bl-lg rounded-br-lg flex flex-col py-4 h-[calc(100vh_-_245px)] max-lg:h-[calc(100vh_-_90px)];
   @apply relative rounded-bl-lg rounded-br-lg flex flex-col py-4 xl:h-[calc(100vh_-_245px)] h-[calc(100vh_-_109px)]
-  max-lg:h-[calc(100vh_-_59px)] overflow-auto;
+  max-lg:h-[calc(100vh_-_59px)] overflow-y-auto overflow-x-hidden;
 }
 
 .wrapper {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "#imports";
+import { onMounted, onUnmounted, ref } from "#imports";
 import BaseAccordion from "~/components/base/BaseAccordion.vue";
 import ProjectsFilters from "~/components/pages/projects/ProjectsFilters.vue";
 import ProjectCard from "~/components/pages/projects/ProjectCard.vue";
@@ -8,6 +8,7 @@ import {
   technologies,
   TechnologyFace,
 } from "~/types/projects/projects";
+import { BreakpointsEnum } from "~/enums/breakpoints.enum";
 
 const projects = ref<ProjectFace[]>([
   {
@@ -58,21 +59,47 @@ function updateFilters(technologies: TechnologyFace[]) {
     ),
   );
 }
+
+// Size Settings
+
+const windowWidth = ref();
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
+};
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  handleResize();
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
 
 <template>
-  <div class="flex -my-4 h-[inherit]">
+  <div class="flex max-lg:flex-col -my-4 h-[inherit]">
+    <div class="text-base max-md:text-sm text-white p-6 lg:hidden">
+      {{ $t("projects.pageTitle") }}
+    </div>
     <div class="filter-selection">
-      <BaseAccordion :title="$t('projects.projects')" :opened-default="true">
+      <BaseAccordion
+        :theme="windowWidth > BreakpointsEnum.LG ? 'dark' : 'light'"
+        :title="$t('projects.filters')"
+      >
         <div class="py-4">
           <ProjectsFilters @update="updateFilters"></ProjectsFilters>
         </div>
       </BaseAccordion>
     </div>
     <div
-      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] flex"
+      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-full flex"
     >
       <div class="projects">
+        <div
+          class="col-span-3 max-md:col-span-2 max-sm:col-span-1 text-white lg:hidden"
+        >
+          // {{ $t("projects.projects") }}
+        </div>
         <ProjectCard
           v-for="(p, index) in filteredProjects"
           :key="p.id"
@@ -87,11 +114,11 @@ function updateFilters(technologies: TechnologyFace[]) {
 
 <style scoped lang="scss">
 .filter-selection {
-  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] shrink-0 border-e border-line-1;
+  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] max-lg:w-full shrink-0 lg:border-e border-line-1;
 }
 
 .projects {
-  @apply px-10 max-2xl:px-8 pb-6 pt-10 max-2xl:pt-8 grid grid-cols-3 max-xl:grid-cols-2 gap-x-6 gap-y-8 overflow-y-auto;
+  @apply px-10 max-2xl:px-8 max-lg:px-6 max-sm:ps-4 pb-6 pt-10 max-2xl:pt-8 grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-x-6 gap-y-8 overflow-y-auto max-xl:w-full;
 }
 
 ::-webkit-scrollbar {
