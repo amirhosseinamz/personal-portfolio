@@ -3,6 +3,7 @@ import { defineNuxtConfig } from "nuxt/config";
 import dotenv from "dotenv";
 import vue from "@vitejs/plugin-vue";
 import svgLoader from "vite-svg-loader";
+import path from "path";
 
 dotenv.config();
 export default defineNuxtConfig({
@@ -71,5 +72,8 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [require("vite-svg-loader")()],
+  },
+  alias: {
+    "@icons": "/assets/icons",
   },
 });

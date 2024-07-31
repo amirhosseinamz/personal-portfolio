@@ -69,7 +69,9 @@ function updateFilters(technologies: TechnologyFace[]) {
         </div>
       </BaseAccordion>
     </div>
-    <div class="xl:w-[calc(100%_-_310px)] w-[calc(100%_-_250px)] flex">
+    <div
+      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] flex"
+    >
       <div class="projects">
         <ProjectCard
           v-for="(p, index) in filteredProjects"
@@ -85,7 +87,7 @@ function updateFilters(technologies: TechnologyFace[]) {
 
 <style scoped lang="scss">
 .filter-selection {
-  @apply w-[310px] max-xl:w-[250px] shrink-0 border-e border-line-1;
+  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] shrink-0 border-e border-line-1;
 }
 
 .projects {

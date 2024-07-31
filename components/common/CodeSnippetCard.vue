@@ -102,11 +102,12 @@ https://jsonplaceholder.typicode.com/posts/1
   }
 
   .code {
-    @apply rounded bg-primary-400 border border-line-1;
+    @apply rounded max-md:rounded-xl bg-primary-400 border border-line-1;
   }
 
   &:deep(.code-text) {
-    @apply -mt-6 ms-6;
+    @apply -mt-6 max-md:-mt-4 ms-6 max-md:ms-4;
+    padding-bottom: 1rem !important;
   }
 }
 </style>

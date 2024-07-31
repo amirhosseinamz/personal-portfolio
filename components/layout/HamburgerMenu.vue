@@ -50,7 +50,7 @@ const toggleMenu = () => {
 @import "assets/sass/transitions/directions";
 
 .hamburger-menu {
-  @apply absolute start-0 w-full top-0 h-full bg-primary-300 z-[5] flex flex-col justify-between lg:hidden;
+  @apply fixed start-0 w-full h-[calc(100%_-_58px)] top-[58px] bg-primary-300 z-[5] flex flex-col justify-between lg:hidden;
   .navigation-menu {
     @apply flex flex-col;
     &_item {

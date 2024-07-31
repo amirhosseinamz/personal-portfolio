@@ -17,7 +17,7 @@ onMounted(() => {
   <div class="header">
     <div class="flex items-center h-full">
       <div
-        class="w-[310px] max-xl:w-[250px] h-full border-e border-line-1 flex items-center justify-start text-secondary-1 ps-[22px]"
+        class="w-[310px] max-2xl:w-[275px] max-xl:w-[250px] h-full lg:border-e border-line-1 flex items-center justify-start text-secondary-1 ps-[22px]"
       >
         {{ $t("fullName") }}
       </div>
@@ -71,7 +71,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .header {
-  @apply h-[57px] rounded-tl-lg rounded-tr-lg border-b border-line-1 w-full max-lg:pe-[18px] relative;
+  @apply h-[57px] min-h-[57px] rounded-tl-lg rounded-tr-lg border-b border-line-1 w-full max-lg:pe-[18px] relative;
   .navigation-menu {
     @apply flex items-center h-full flex-grow max-lg:hidden;
     &_item {
