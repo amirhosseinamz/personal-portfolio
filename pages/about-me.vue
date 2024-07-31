@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref } from "#imports";
+import { onMounted, onUnmounted, ref } from "#imports";
 import { FolderFace } from "~/interfaces/files.interface";
 import BaseAccordion from "~/components/base/BaseAccordion.vue";
 import BaseFilePreview from "~/components/base/BaseFilePreview.vue";
 import CodeSnippets from "~/components/pages/about-me/CodeSnippets.vue";
 import BaseResizable from "~/components/base/BaseResizable.vue";
 import BaseFileManager from "~/components/base/BaseFileManager.vue";
+import { BreakpointsEnum } from "~/enums/breakpoints.enum";
 
 const folders = ref<FolderFace[]>([
   {
@@ -28,7 +29,7 @@ const folders = ref<FolderFace[]>([
           minima nesciunt numquam omnis, quia quibusdam quos repellendus repudiandae sint soluta totam, vel? Quae,
           voluptatibus.
         `,
-        status: "close",
+        status: "open",
       },
       {
         id: 2,
@@ -55,17 +56,44 @@ const folders = ref<FolderFace[]>([
     title: "education",
   },
 ]);
+
+// Size Settings
+
+const windowWidth = ref();
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
+};
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  handleResize();
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
 
 <template>
-  <div class="flex -my-4 h-[inherit]">
+  <div class="flex max-lg:flex-col -my-4 h-[inherit]">
+    <div class="text-base max-md:text-sm text-white p-6 lg:hidden">
+      _about-me
+    </div>
     <div class="file-selection">
-      <BaseAccordion title="personal-info" :opened-default="true">
+      <BaseAccordion
+        :theme="windowWidth > BreakpointsEnum.LG ? 'dark' : 'light'"
+        title="personal-info"
+        :opened-default="true"
+        class="max-lg:mb-[2px]"
+      >
         <div class="py-4">
           <BaseFileManager :folders="folders" />
         </div>
       </BaseAccordion>
-      <BaseAccordion title="contacts" :opened-default="true">
+      <BaseAccordion
+        :theme="windowWidth > BreakpointsEnum.LG ? 'dark' : 'light'"
+        title="contacts"
+        :opened-default="false"
+      >
         <div class="py-4 flex flex-col gap-2">
           <NuxtLink class="flex items-center gap-2">
             <svg
@@ -100,14 +128,14 @@ const folders = ref<FolderFace[]>([
         </div>
       </BaseAccordion>
     </div>
-    <div class="xl:w-[calc(100%_-_310px)] w-[calc(100%_-_250px)] flex">
-      <!--      <div class="w-1/2">-->
-      <!--        <BaseFilePreview/>-->
-      <!--      </div>-->
-      <!--      <div class="w-1/2">-->
-      <!--        <CodeSnippets/>-->
-      <!--      </div>-->
-      <BaseResizable :start-pane-min-width="300" :end-pane-min-width="500">
+    <div
+      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] lg:w-[calc(100%_-_250px)] w-full flex"
+    >
+      <BaseResizable
+        v-if="windowWidth > BreakpointsEnum.LG"
+        :start-pane-min-width="300"
+        :end-pane-min-width="500"
+      >
         <template #left>
           <BaseFilePreview :folders="folders" />
         </template>
@@ -115,12 +143,16 @@ const folders = ref<FolderFace[]>([
           <CodeSnippets />
         </template>
       </BaseResizable>
+      <div v-else class="flex flex-col w-full pb-6">
+        <BaseFilePreview :folders="folders" />
+        <CodeSnippets />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .file-selection {
-  @apply w-[310px] max-xl:w-[250px] shrink-0 border-e border-line-1;
+  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] max-lg:w-full shrink-0 lg:border-e border-line-1 max-lg:mb-7;
 }
 </style>

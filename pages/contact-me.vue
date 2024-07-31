@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useI18n } from "#imports";
+import { computed, onMounted, onUnmounted, ref, useI18n } from "#imports";
 
 const { t, locale } = useI18n();
 import BaseAccordion from "~/components/base/BaseAccordion.vue";
@@ -114,7 +114,9 @@ function formUpdate(data: FormDataFace) {
         </div>
       </BaseAccordion>
     </div>
-    <div class="xl:w-[calc(100%_-_310px)] w-[calc(100%_-_250px)] flex">
+    <div
+      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] flex"
+    >
       <BaseResizable
         :start-pane-min-width="300"
         :end-pane-min-width="300"
@@ -139,6 +141,6 @@ function formUpdate(data: FormDataFace) {
 
 <style scoped lang="scss">
 .contact-links {
-  @apply w-[310px] max-xl:w-[250px] shrink-0 border-e border-line-1;
+  @apply w-[310px] max-2xl:w-[275px] max-xl:w-[250px] shrink-0 border-e border-line-1;
 }
 </style>

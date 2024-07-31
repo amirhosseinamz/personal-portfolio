@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useToasterStore, TToastStatus } from "~/stores/useToasterStore";
-import { TIconName } from "~/components/base/BaseIcon.vue";
-import BaseIcon from "~/components/base/BaseIcon.vue";
+import { TIconName } from "~/components/base/base-icon/BaseIcon.vue";
+import BaseIcon from "~/components/base/base-icon/BaseIcon.vue";
 
 const toastStore = useToasterStore();
 

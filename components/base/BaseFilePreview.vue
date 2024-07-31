@@ -18,7 +18,6 @@ const selectedFile = computed<FileFace | undefined>(() => {
   }
   return undefined;
 });
-
 const closeFile = () => {
   let folders = props.folders.map((folder: FolderFace) => {
     folder.files?.forEach((f: FileFace) => {
@@ -53,12 +52,13 @@ const closeFile = () => {
         </div>
       </div>
     </div>
+    <div class="ps-6 text-white lg:hidden">// {{ selectedFile?.title }}</div>
     <div class="content" :class="{ 'has-file': !!selectedFile }">
       <template v-if="selectedFile">
-        <div class="lines">
+        <div class="lines max-lg:hidden">
           <div class="number">
             <template
-              v-for="num in Array.from({ length: 40 }, (v, k) => k + 1)"
+              v-for="num in Array.from({ length: 25 }, (v, k) => k + 1)"
             >
               {{ num }}
               <br />
@@ -72,6 +72,7 @@ const closeFile = () => {
           ></div>
         </div>
       </template>
+
       <div
         v-else
         class="w-full h-full flex items-center justify-center px-4 text-center"
@@ -84,9 +85,9 @@ const closeFile = () => {
 
 <style scoped lang="scss">
 .file-preview {
-  @apply flex flex-col w-full h-full border-e border-line-1;
+  @apply flex flex-col w-full h-full lg:border-e border-line-1;
   .head {
-    @apply h-10 border-b border-line-1 w-full shrink-0 sticky top-0 bg-primary-300;
+    @apply h-10 border-b border-line-1 w-full shrink-0 sticky top-0 bg-primary-300 max-lg:hidden;
     .file-item {
       @apply h-full border-e border-line-1 flex items-center justify-between ps-[14px] pe-3 w-[218px];
 
@@ -101,14 +102,14 @@ const closeFile = () => {
   }
 
   .content {
-    @apply relative h-full overflow-auto;
+    @apply relative h-full lg:overflow-auto;
     &:after {
       content: " ";
-      @apply sticky -top-4 end-0 h-[calc(100%_+_1rem)] w-[1px] bg-line-1;
+      @apply sticky -top-4 end-0 h-[calc(100%_+_1rem)] w-[1px] bg-line-1 max-lg:hidden;
     }
 
     .lines {
-      @apply flex flex-col h-full me-8;
+      @apply flex flex-col h-full me-8 max-lg:hidden;
       .number {
         @apply text-base text-secondary-1 leading-7;
       }
@@ -119,13 +120,13 @@ const closeFile = () => {
     }
 
     &.has-file {
-      @apply flex pt-4 ps-9;
+      @apply flex pt-4 ps-9 max-lg:ps-6;
     }
   }
 }
 
 ::-webkit-scrollbar {
-  @apply xl:w-4 w-3 border-l border-line-1;
+  @apply xl:w-4 w-3 lg:border-l lg:border-line-1;
 }
 
 ::-webkit-scrollbar-track {
