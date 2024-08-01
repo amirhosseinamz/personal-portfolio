@@ -1,13 +1,21 @@
 <template>
-  <button @click="successToast">Click me!</button>
+  <!--  <button @click="openInfoModal">Open info modal</button>-->
 </template>
 
 <script setup lang="ts">
-import { useToasterStore } from "~/stores/useToasterStore";
+import useModalStore from "~/stores/useModalStore";
 
-const toasterStore = useToasterStore();
+// Initialize store
+const store = useModalStore();
 
-const successToast = () => toasterStore.error({ text: "Yahoooooo!" });
+// Make a function that opens modal with our inner component
+// function openInfoModal() {
+//   store.openModal({
+//     component: ModalInfo,
+//     props: { title: "My Dear Prop" },
+//     onClose: (data: any) => {
+//       console.log("closed: ", data);
+//     },
+//   });
+// }
 </script>
-
-<style scoped lang="scss"></style>

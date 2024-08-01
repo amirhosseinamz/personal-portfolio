@@ -49,6 +49,7 @@
 <script setup lang="ts">
 // import { setPageLayout } from "#app";
 // setPageLayout('custom');
+import { onBeforeMount, onMounted, onUnmounted, ref, useI18n } from "#imports";
 import { BreakpointsEnum } from "~/enums/breakpoints.enum";
 
 const { locale } = useI18n();
@@ -56,7 +57,6 @@ const windowWidth = ref();
 
 import GamePad from "~/components/pages/index/GamePad.vue";
 import CodeHighlight from "~/components/base/CodeHighlight.vue";
-import { onBeforeMount, onMounted, onUnmounted, ref, useI18n } from "#imports";
 
 const handleResize = () => {
   windowWidth.value = window.innerWidth;
