@@ -1,4 +1,5 @@
 <template>
+  <BaseModal />
   <BaseToaster />
   <div :dir="locale === 'fa' ? 'rtl' : 'ltr'">
     <NuxtLayout>
@@ -9,6 +10,7 @@
 <script lang="ts" setup>
 import { useI18n } from "#imports";
 import BaseToaster from "~/components/base/BaseToaster.vue";
+import BaseModal from "~/components/base/BaseModal.vue";
 
 const { locale, availableLocales } = useI18n();
 </script>

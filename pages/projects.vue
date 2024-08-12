@@ -118,7 +118,7 @@ onUnmounted(() => {
 }
 
 .projects {
-  @apply px-10 max-2xl:px-8 max-lg:px-6 max-sm:ps-4 pb-6 pt-10 max-2xl:pt-8 grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-x-6 gap-y-8 overflow-y-auto max-xl:w-full;
+  @apply px-10 max-2xl:px-8 max-lg:px-6 max-sm:ps-4 pb-16 pt-10 max-2xl:pt-8 grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-x-6 gap-y-8 overflow-y-auto max-xl:w-full;
 }
 
 ::-webkit-scrollbar {

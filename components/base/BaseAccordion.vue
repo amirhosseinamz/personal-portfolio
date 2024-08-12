@@ -5,6 +5,7 @@ interface PropsFace {
   title: string;
   openedDefault: boolean;
   theme?: "dark" | "light";
+  contentClass?: string;
 }
 
 const props = withDefaults(defineProps<PropsFace>(), {
@@ -34,7 +35,7 @@ onMounted(() => {
       {{ title }}
     </div>
     <div
-      class="accordion-content"
+      :class="['accordion-content', props.contentClass]"
       :style="{ maxHeight: accordionIsOpen ? '-webkit-fill-available' : '' }"
     >
       <slot></slot>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "#imports";
+import { onMounted, onUnmounted, ref, useI18n } from "#imports";
 import { FolderFace } from "~/interfaces/files.interface";
 import BaseAccordion from "~/components/base/BaseAccordion.vue";
 import BaseFilePreview from "~/components/base/BaseFilePreview.vue";
@@ -8,52 +8,172 @@ import BaseResizable from "~/components/base/BaseResizable.vue";
 import BaseFileManager from "~/components/base/BaseFileManager.vue";
 import { BreakpointsEnum } from "~/enums/breakpoints.enum";
 
+const { t } = useI18n();
+
 const folders = ref<FolderFace[]>([
   {
     id: 1,
-    title: "bio",
+    title: t("aboutMe.bio"),
     files: [
       {
         id: 1,
         parentId: 1,
         type: "md",
-        title: "high-school",
-        content: `
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam autem cumque deserunt dolores
-          ducimus eaque hic, libero maxime nisi possimus quasi quo recusandae sequi sint tempore ullam vero vitae.
-          <br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab asperiores cum cumque cupiditate deleniti facere
-          in, iste, iusto, libero minima mollitia praesentium provident qui quod rem repellendus temporibus ullam velit?
-          <br>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aut cupiditate illum ipsa ipsum magnam
-          minima nesciunt numquam omnis, quia quibusdam quos repellendus repudiandae sint soluta totam, vel? Quae,
-          voluptatibus.
-        `,
+        title: t("aboutMe.files.biography"),
+        content: t("aboutMe.files.biographyText", { br: `<br />` }),
         status: "open",
       },
       {
         id: 2,
         parentId: 1,
         type: "md",
-        title: "university",
-        content: `
-         Hello. My university is QUT.
-         <br>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem distinctio, doloribus illum ipsam magni molestiae odit porro possimus quisquam quo repudiandae tempora ut voluptatem! Debitis nulla numquam provident qui velit!
-         <br>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis dignissimos expedita facere laborum magni natus necessitatibus, officia quaerat quia, ratione saepe vitae! Aperiam dolore error esse est facere! Alias!
-        `,
+        title: t("aboutMe.files.contactInformation"),
+        content: t("aboutMe.files.contactInformationText", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 3,
+        parentId: 1,
+        type: "md",
+        title: t("aboutMe.files.interests"),
+        content: t("aboutMe.files.interestsText", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 4,
+        parentId: 1,
+        type: "md",
+        title: t("aboutMe.files.languages"),
+        content: t("aboutMe.files.languagesText", {
+          br: `<br />`,
+        }),
         status: "close",
       },
     ],
   },
   {
     id: 2,
-    title: "interests",
+    title: t("aboutMe.files.skills.skillsTitle"),
+    files: [
+      {
+        id: 1,
+        parentId: 2,
+        type: "md",
+        title: t("aboutMe.files.skills.javascript"),
+        content: t("aboutMe.files.skills.javascriptContent", { br: `<br />` }),
+        status: "close",
+      },
+      {
+        id: 2,
+        parentId: 2,
+        type: "md",
+        title: t("aboutMe.files.skills.htmlAndCss"),
+        content: t("aboutMe.files.skills.htmlAndCssContent", { br: `<br />` }),
+        status: "close",
+      },
+      {
+        id: 3,
+        parentId: 2,
+        type: "md",
+        title: t("aboutMe.files.skills.typescript"),
+        content: t("aboutMe.files.skills.typescriptContent", { br: `<br />` }),
+        status: "close",
+      },
+      {
+        id: 4,
+        parentId: 2,
+        type: "md",
+        title: t("aboutMe.files.skills.frameworks"),
+        content: t("aboutMe.files.skills.frameworksContent", { br: `<br />` }),
+        status: "close",
+      },
+    ],
   },
   {
     id: 3,
-    title: "education",
+    title: t("aboutMe.files.experience.experienceTitle"),
+    files: [
+      {
+        id: 1,
+        parentId: 3,
+        type: "md",
+        title: t("aboutMe.files.experience.parsData"),
+        content: t("aboutMe.files.experience.parsDataContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 2,
+        parentId: 3,
+        type: "md",
+        title: t("aboutMe.files.experience.samaneAhan"),
+        content: t("aboutMe.files.experience.samaneAhanContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 3,
+        parentId: 3,
+        type: "md",
+        title: t("aboutMe.files.experience.drKermani"),
+        content: t("aboutMe.files.experience.drKermaniContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 3,
+        parentId: 4,
+        type: "md",
+        title: t("aboutMe.files.experience.mahanSoft"),
+        content: t("aboutMe.files.experience.mahanSoftContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 5,
+        parentId: 3,
+        type: "md",
+        title: t("aboutMe.files.experience.helpsy"),
+        content: t("aboutMe.files.experience.helpsyContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+      {
+        id: 6,
+        parentId: 3,
+        type: "md",
+        title: t("aboutMe.files.experience.otherProjects"),
+        content: t("aboutMe.files.experience.otherProjectsContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: t("aboutMe.files.education.educationTitle"),
+    files: [
+      {
+        id: 1,
+        parentId: 4,
+        type: "md",
+        title: t("aboutMe.files.education.degree"),
+        content: t("aboutMe.files.education.degreeContent", {
+          br: `<br />`,
+        }),
+        status: "close",
+      },
+    ],
   },
 ]);
 
@@ -84,6 +204,7 @@ onUnmounted(() => {
         title="personal-info"
         :opened-default="true"
         class="max-lg:mb-[2px]"
+        content-class="!pe-0"
       >
         <div class="py-4">
           <BaseFileManager :folders="folders" />
@@ -134,7 +255,7 @@ onUnmounted(() => {
       <BaseResizable
         v-if="windowWidth > BreakpointsEnum.LG"
         :start-pane-min-width="300"
-        :end-pane-min-width="500"
+        :end-pane-min-width="360"
       >
         <template #left>
           <BaseFilePreview :folders="folders" />

@@ -14,6 +14,11 @@ export type TIconName =
   | "toast-success"
   | "toggle-arrow"
   | "readme"
+  | "screw-1"
+  | "instagram"
+  | "telegram"
+  | "github"
+  | "code-details"
   | "folder-icon";
 
 const props = defineProps<{ name: TIconName }>();

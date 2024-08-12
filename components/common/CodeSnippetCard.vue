@@ -1,38 +1,25 @@
 <script setup lang="ts">
 import CodeHighlight from "~/components/base/CodeHighlight.vue";
+import CodeDetailsModal from "~/components/pages/about-me/CodeDetailsModal.vue";
 import { ref } from "#imports";
+import useModalStore from "~/stores/useModalStore";
+import { ICodeSnippet } from "~/types/about-me/about-me";
+import BaseIcon from "~/components/base/base-icon/BaseIcon.vue";
 
-const codeSnippet = ref(`
-class DataFetcher {
-  constructor() {
-    this.cache = new Map();
-  }
+const modalStore = useModalStore();
 
-  async fetchData(url) {
-    if (this.cache.has(url)) {
-      console.log('Returning cached data');
-      return this.cache.get(url);
-    }
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    this.cache.set(url, data);
-    console.log('Fetching new data');
-    return data;
-  }
+interface IProps {
+  data: ICodeSnippet;
 }
 
-// Usage
-const dataFetcher = new DataFetcher();
-dataFetcher.fetchData('
-https://jsonplaceholder.typicode.com/posts/1
-')
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
-`);
+const props = withDefaults(defineProps<IProps>(), {});
+
+function openDetails() {
+  modalStore.openModal({
+    component: CodeDetailsModal,
+    props: { description: props.data.description },
+  });
+}
 </script>
 
 <template>
@@ -40,28 +27,22 @@ https://jsonplaceholder.typicode.com/posts/1
     <div class="info">
       <div class="start-section">
         <div class="img">
-          <img src="/images/avatar-me.jpg" alt="ME" />
+          <img :src="data.img" alt="Avatar" />
         </div>
         <div class="flex flex-col gap-[2px]">
-          <span class="user-name"> @amirhosseinamz </span>
-          <span class="time"> Created 5 month ago </span>
+          <span class="user-name"> @{{ data.username }} </span>
+          <span class="time">
+            {{ $t("aboutMe.createdIn") }} {{ data.createTime }}
+          </span>
         </div>
       </div>
       <div class="end-section">
         <div class="flex items-center gap-[6px]">
-          <svg
-            width="15"
-            height="16"
-            viewBox="0 0 15 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+          <BaseIcon name="code-details" />
+          <span
+            class="text-sm text-secondary-1 cursor-pointer"
+            @click="openDetails"
           >
-            <path
-              d="M2.19676 13.1709C1.49928 12.4753 0.946158 11.6486 0.569167 10.7385C0.192176 9.82841 -0.00124976 8.85277 6.07612e-06 7.86768C6.07612e-06 3.72543 3.35776 0.367676 7.50001 0.367676C11.6423 0.367676 15 3.72543 15 7.86768C15 12.0099 11.6423 15.3677 7.50001 15.3677H6.07612e-06L2.19676 13.1709ZM4.50001 8.61768C4.50001 9.41333 4.81608 10.1764 5.37869 10.739C5.94129 11.3016 6.70436 11.6177 7.50001 11.6177C8.29566 11.6177 9.05872 11.3016 9.62133 10.739C10.1839 10.1764 10.5 9.41333 10.5 8.61768H4.50001Z"
-              fill="#607B96"
-            />
-          </svg>
-          <span class="text-sm text-secondary-1">
             {{ $t("details") }}
           </span>
         </div>
@@ -69,7 +50,7 @@ https://jsonplaceholder.typicode.com/posts/1
     </div>
     <div class="code">
       <CodeHighlight
-        :code="codeSnippet"
+        :code="props.data.code"
         language="javascript"
         code-class="code-text"
       ></CodeHighlight>
@@ -79,7 +60,7 @@ https://jsonplaceholder.typicode.com/posts/1
 
 <style scoped lang="scss">
 .code-snippet-card-container {
-  @apply flex flex-col gap-3 w-full;
+  @apply flex flex-col gap-3 w-full pb-10;
   .info {
     @apply flex items-start justify-between w-full;
     .start-section {

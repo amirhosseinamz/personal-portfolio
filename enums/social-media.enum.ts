@@ -1,5 +1,7 @@
 export enum SocialMediaEnum {
   GITHUB = "https://github.com/amirhosseinamz",
+  GITHUB_USERNAME = "amirhosseinamz",
+  SNAKE_GAME_GITHUB = "https://github.com/amirhosseinamz/snake-game-js",
   PHONE = "tel:+989190052466",
   INSTAGRAM = "https://instagram.com/amirhosseinamz",
   TELEGRAM = "https://t.me/amirhosseinamz",

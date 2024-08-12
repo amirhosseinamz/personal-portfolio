@@ -52,19 +52,21 @@ const closeFile = () => {
         </div>
       </div>
     </div>
-    <div class="ps-6 text-white lg:hidden">// {{ selectedFile?.title }}</div>
+    <div class="ps-6 text-white lg:hidden" id="selectedFile">
+      // {{ selectedFile?.title }}
+    </div>
     <div class="content" :class="{ 'has-file': !!selectedFile }">
       <template v-if="selectedFile">
-        <div class="lines max-lg:hidden">
-          <div class="number">
-            <template
-              v-for="num in Array.from({ length: 25 }, (v, k) => k + 1)"
-            >
-              {{ num }}
-              <br />
-            </template>
-          </div>
-        </div>
+        <!--        <div class="lines max-lg:hidden">-->
+        <!--          <div class="number">-->
+        <!--            <template-->
+        <!--              v-for="num in Array.from({ length: 25 }, (v, k) => k + 1)"-->
+        <!--            >-->
+        <!--              {{ num }}-->
+        <!--              <br />-->
+        <!--            </template>-->
+        <!--          </div>-->
+        <!--        </div>-->
         <div class="preview">
           <div
             class="text-lg text-secondary-1 leading-7"
@@ -89,7 +91,7 @@ const closeFile = () => {
   .head {
     @apply h-10 border-b border-line-1 w-full shrink-0 sticky top-0 bg-primary-300 max-lg:hidden;
     .file-item {
-      @apply h-full border-e border-line-1 flex items-center justify-between ps-[14px] pe-3 w-[218px];
+      @apply h-full border-e border-line-1 flex items-center justify-between ps-[14px] pe-3 w-[240px];
 
       .title {
         @apply text-base text-secondary-1;
@@ -109,18 +111,18 @@ const closeFile = () => {
     }
 
     .lines {
-      @apply flex flex-col h-full me-8 max-lg:hidden;
+      @apply flex flex-col h-full me-6 max-lg:hidden;
       .number {
         @apply text-base text-secondary-1 leading-7;
       }
     }
 
     .preview {
-      @apply h-full w-full;
+      @apply h-full w-full pe-4;
     }
 
     &.has-file {
-      @apply flex pt-4 ps-9 max-lg:ps-6;
+      @apply flex pt-4 ps-6 max-lg:ps-4;
     }
   }
 }

@@ -12,7 +12,19 @@
     "contactMeTab": "_contact-me"
   },
   "mainPage": {
-    "greeting": "Hi all. I am"
+    "greeting": "Hi all. I am",
+    "startGame": "start-game",
+    "gameOver": "GAME OVER!",
+    "snakeGame": "SNAKE GAME",
+    "enjoyTheGame": "You can enjoy the game :)",
+    "seeInGithub": "You can also see it in my github page",
+    "findMyProfileInGithub": "Find my profile in github",
+    "game": {
+      "useKeyboard": "use keyboard",
+      "arrowsToPlay": "arrows to play",
+      "score": "score",
+      "highScore": "high-score"
+    }
   },
   "aboutMe": {
     "bio": "bio",
@@ -20,7 +32,54 @@
     "university": "university",
     "codeSnippetShowcase": "Code snippet showcase",
     "selectFileSentence": "Please select a file from files section",
-    "pageTitle": "_about-me"
+    "pageTitle": "_about-me",
+    "files": {
+      "biography": "biography",
+      "biographyText": "I am AmirHossein Amouzgar, a passionate front-end web developer born in 2001.{br} I hold a Bachelor's degree in Industrial Engineering from Qom University of Technology.{br} My journey into programming began at the age of 18 when I discovered a strong interest in web design and development, leading me to self-study HTML, CSS, and JavaScript.{br} Over the years, I have honed my skills in various front-end technologies and frameworks, particularly Vue.js, Nuxt.js, Angular and React. My expertise includes creating responsive, user-friendly interfaces and integrating complex state management systems.{br} I am also familiar with back-end concepts and have some experience working with Node.js and databases such as MongoDB and MySQL.{br} I am proficient in using tools like Bootstrap, Tailwind, SASS, and various version control and task management systems.{br} My ability to work comfortably in English allows me to effectively study documentation and take courses to continuously improve my skills.{br}In addition to my technical abilities, I possess strong teamwork and remote working skills, making me an adaptable and collaborative developer. I am always eager to learn new things and stay updated with the latest industry trends.",
+      "contactInformation": "contact-info",
+      "contactInformationText": "- Phone Number: +98 919 0052 466 {br} - Telegram ID: amirhosseinamz {br} - Instagram ID: amirhosseinamz",
+      "interests": "interests",
+      "interestsText": "- Web Development {br} - Learning New Technologies {br} - Team Collaboration {br} - Continuous Learning and Improvement {br} - Team Management {br} - Mentoring {br} - Artificial Intelligence",
+      "languages": "languages",
+      "languagesText": "- Persian (Native) {br} - English (Fluent)",
+      "skills": {
+        "skillsTitle": "skills",
+        "javascript": "javascript",
+        "javascriptContent": "- Proficient in ES6+ syntax and features {br} - Extensive experience with Vue.js and Angular frameworks (and React a bit) {br} - Knowledgeable in asynchronous programming and AJAX",
+        "htmlAndCss": "html-css",
+        "htmlAndCssContent": "- Proficient in HTML5 and CSS3{br}- Experience with responsive design frameworks such as Bootstrap and Tailwind{br}- Skilled in using SASS for advanced styling",
+        "typescript": "typescript",
+        "typescriptContent": "- Comfortable using TypeScript in various projects{br}- Experience integrating TypeScript with Vue.js, Angular, and Node.js",
+        "frameworks": "frameworks",
+        "frameworksContent": "- Vue.js: Proficient in Vue.js and its tools{br}- Nuxt.js: Extensive experience with Nuxt 2 and Nuxt 3{br}- Angular: Experienced with Angular framework and worked on large-scale and online angular project{br}- React: Basic experience with React"
+      },
+      "experience": {
+        "experienceTitle": "experience",
+        "parsData": "pars-data",
+        "parsDataContent": "Company: ParsData{br}Location: Tehran{br}Role: Front-End Developer (Nuxt){br}Duration: About 1 year{br}Responsibilities:{br}- Developed responsive UI components using Nuxt.js{br}- Integrated state management tools such as VueX{br}- Refactor the whole project and create base and reusable components",
+        "samaneAhan": "samane-ahan",
+        "samaneAhanContent": "Company: Samane Ahan{br}Location: Qom{br}Role: Front-End Developer(Nuxt){br}Duration: About 1 year{br}Responsibilities:{br}- Utilized Tailwind for responsive design{br}- Building a Nuxt project from scratch and collaborating with variant teammates{br}",
+        "drKermani": "dr-kermani",
+        "drKermaniContent": "Company: DrKermani (Kermani Diet){br}Location: Qom{br}Role: Front-End Developer(Vue){br}Duration: About 1 year{br}Responsibilities:{br}- Designed UI components with Element UI kit and Vuetify{br}- Ensured cross-browser compatibility and responsive design{br}- Add features and refactor drkermanidiet Vue app {br}- Collaborated with back-end developer to implement RESTful APIs",
+        "mahanSoft": "mahan-soft",
+        "mahanSoftContent": "Company: Mahan Soft{br}Location: Qom{br}Role: Front-End Developer(Nuxt 3 + Typescript){br}Duration: about 1 year{br}Responsibilities:{br}- Developed front-end components using Nuxt 3{br}- Integrated TypeScript for improved code maintainability{br}- Cooperation with other team members such as front-end developers, back-end developers, designers, devops, QA testers, etc.",
+        "helpsy": "helpsy",
+        "helpsyContent": "Company: Helpsy{br}Location: Qom-Isfahan{br}Role: Front-End Developer(Angular){br}Duration: Working from 2023{br}Responsibilities:{br}- Implemented responsive designs using Bootstrap and SCSS{br}- Collaborated with remote team to deliver high-quality projects",
+        "otherProjects": "other-projects",
+        "otherProjectsContent": "Project Name: WinWin{br}Client: WinWin Company{br}Role: Front-End Developer{br}Technologies Used: HTML, CSS, Tailwind, Vanilla JS{br}Description: Developed and maintained a pixel-perfect and responsive web application for WinWin, ensuring a seamless user experience across different devices. {br} ################################ {br} Project Name: Holding Saadat{br}Client: Saadat-Holding{br}Role: Front-End Developer{br}Technologies Used: HTML, Css, Tailwind, Vanilla Js{br}Description: Created an optimized project designed in Figma with the cooperation of designer and backend developer."
+      },
+      "education": {
+        "educationTitle": "education",
+        "degree": "degree",
+        "degreeContent": "Degree: Bachelor of Industrial Engineering{br}University: Qom University of Technology{br}Year of Graduation: 2024"
+      }
+    },
+    "createdIn": "Created in",
+    "codeSnippet": {
+      "dataFetcherDescription": "The DataFetcher class is designed to handle HTTP requests and cache the results. It optimizes data retrieval by storing responses in a cache so that subsequent requests to the same URL do not need to fetch data again from the network. This can be particularly useful for improving performance and reducing network load.",
+      "toastDescription": "This code defines a Pinia store to manage toast notifications in a Vue application. Toast notifications are temporary messages that appear on the screen to provide feedback or updates to the user. The store includes functionalities to create, display, and automatically remove these notifications after a specified timeout.",
+      "codeDetails": "code-details"
+    }
   },
   "projects": {
     "projects": "projects",
@@ -33,6 +92,7 @@
     "enterYourName": "Enter your name",
     "enterYourEmail": "Enter your email",
     "enterYourMessage": "Enter your message",
+    "invalidEmail": "Please enter a valid email!",
     "emailSuccess": "Your email has been successfully sent to me.",
     "emailError": "There is a problem in sending email!",
     "completeFormWarning": "Please complete the form!",

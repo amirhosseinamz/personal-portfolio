@@ -48,6 +48,13 @@ html {
   }
 }
 
+.modal_mobile-mode {
+  @apply max-md:fixed max-md:bottom-0;
+  @media only screen and (max-width: 768px) {
+    width: 100% !important;
+  }
+}
+
 ::-webkit-scrollbar {
   @apply xl:w-4 sm:w-3 xs:w-2 w-1 border-l border-line-1;
 }

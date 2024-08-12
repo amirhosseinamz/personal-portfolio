@@ -7,6 +7,7 @@ import path from "path";
 
 dotenv.config();
 export default defineNuxtConfig({
+  ssr: false,
   devtools: { enabled: true },
   runtimeConfig: {
     gmailUser: process.env.GMAIL_USER,
@@ -57,7 +58,7 @@ export default defineNuxtConfig({
       },
     ],
     defaultLocale: "en",
-    lazy: false,
+    lazy: true,
     langDir: "locales/",
     vueI18n: "./i18n.config.ts",
   },

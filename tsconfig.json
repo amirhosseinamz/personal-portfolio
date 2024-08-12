@@ -1,6 +1,9 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
   "compilerOptions": {
+    "types": [
+      "vue3-text-clamp"
+    ]
   },
   "extends": "./.nuxt/tsconfig.json",
   "include": [
