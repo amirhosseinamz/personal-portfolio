@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch } from "#imports";
 import hljs from "highlight.js/lib/core";
 import javascript from "highlight.js/lib/languages/javascript";
 
@@ -17,6 +17,9 @@ const props = defineProps({
   codeClass: {
     type: String,
   },
+  codeWrapperClass: {
+    type: String,
+  },
   showLines: {
     type: Boolean,
     default: false,
@@ -27,20 +30,24 @@ const codeRef = ref(null);
 const lines = ref([]);
 
 const highlightCode = async () => {
-  if (codeRef.value) {
-    // Clear existing highlighted classes and reset inner content
-    codeRef.value.classList.remove("hljs");
-    codeRef.value.textContent = props.code;
-    // Unset the dataset.highlighted attribute if it exists
-    delete codeRef.value.dataset.highlighted;
+  try {
+    if (codeRef.value) {
+      // Clear existing highlighted classes and reset inner content
+      codeRef.value.classList.remove("hljs");
+      codeRef.value.textContent = props.code;
+      // Unset the dataset.highlighted attribute if it exists
+      delete codeRef.value.dataset.highlighted;
 
-    // Generate line numbers
-    lines.value = props.code.split("\n").map((_, i) => i + 1);
+      // Generate line numbers
+      lines.value = props.code.split("\n").map((_, i) => i + 1);
 
-    // Wait for DOM updates to complete
-    await nextTick();
-    // Apply highlighting
-    hljs.highlightElement(codeRef.value);
+      // Wait for DOM updates to complete
+      await nextTick();
+      // Apply highlighting
+      hljs.highlightElement(codeRef.value);
+    }
+  } catch (error) {
+    console.error("Error highlighting code:", error);
   }
 };
 
@@ -54,8 +61,8 @@ watch(() => props.code, highlightCode);
         {{ line }}
       </div>
     </div>
-    <pre class="highlightjs">
-    <code :class="`language-${language} ${codeClass}`" ref="codeRef">
+    <pre :class="['highlightjs', props.codeWrapperClass]">
+    <code :class="`language-${language} ${props.codeClass}`" ref="codeRef">
       {{ code }}
     </code>
   </pre>

@@ -24,14 +24,17 @@ const openToggle = (index: number) => {
 };
 
 const selectFile = (folderId: any, fileId: any) => {
-  const folders = props.folders.map((folder: FolderFace) => {
+  // Close all files
+  let folders = props.folders.map((folder: FolderFace) => {
+    folder.files?.forEach((file: FileFace) => (file.status = "close"));
+    return folder;
+  });
+  folders = folders.map((folder: FolderFace) => {
     if (folder.id === folderId) {
       if (folder.files) {
         folder.files.forEach((file: FileFace) => {
           if (file.id === fileId) {
             file.status = "open";
-          } else {
-            file.status = "close";
           }
         });
       }
@@ -39,6 +42,10 @@ const selectFile = (folderId: any, fileId: any) => {
     return folder;
   });
   emit("update:folders", folders);
+  const selectedFileElement = document.querySelector("#selectedFile");
+  if (selectedFileElement) {
+    selectedFileElement.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 };
 
 onMounted(() => {
@@ -98,7 +105,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .file-manager {
-  @apply flex flex-col gap-2;
+  @apply flex flex-col gap-2 max-h-[400px] overflow-auto;
   .file {
     @apply flex items-center gap-2 cursor-pointer;
     .title {
@@ -160,5 +167,9 @@ onMounted(() => {
 
 .toggle-content {
   @apply ps-[22px] max-h-0 overflow-hidden;
+}
+
+::-webkit-scrollbar {
+  @apply w-1;
 }
 </style>

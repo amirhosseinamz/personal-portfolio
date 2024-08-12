@@ -141,13 +141,13 @@ onUnmounted(() => {
       </BaseAccordion>
     </div>
     <div
-      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] max-lg:w-full flex pb-6"
+      class="2xl:w-[calc(100%_-_310px)] xl:w-[calc(100%_-_275px)] w-[calc(100%_-_250px)] max-lg:w-full flex"
     >
       <BaseResizable
         v-if="windowWidth > BreakpointsEnum.LG"
         :start-pane-min-width="300"
         :end-pane-min-width="300"
-        start-pane-class="border-e border-line-1"
+        start-pane-class="border-e border-line-1 pb-6"
       >
         <template #left>
           <SendMailForm @update="formUpdate" />

@@ -1,8 +1,15 @@
 <script setup lang="ts">
 import useModalStore from "~/stores/useModalStore";
-import { onMounted, onUnmounted } from "#imports";
+import { computed, onMounted, onUnmounted, ref } from "#imports";
+import { BreakpointsEnum } from "~/enums/breakpoints.enum";
+import { ComputedRef } from "vue";
 
 const store = useModalStore();
+
+const windowWidth = ref();
+const handleResize = () => {
+  windowWidth.value = window.innerWidth;
+};
 
 function keydownListener(event: KeyboardEvent) {
   if (event.key === "Escape") store.closeModal();
@@ -10,20 +17,29 @@ function keydownListener(event: KeyboardEvent) {
 
 onMounted(() => {
   document.addEventListener("keydown", keydownListener);
+  window.addEventListener("resize", handleResize);
+  handleResize();
 });
 
 onUnmounted(() => {
   document.removeEventListener("keydown", keydownListener);
+  window.removeEventListener("resize", handleResize);
 });
 
 function handleClose(data?: any) {
   store.closeModal(data);
 }
+
+const modalAnimation = computed(() => {
+  return windowWidth.value > BreakpointsEnum.MD
+    ? "modal-fade"
+    : "bottom-to-top";
+});
 </script>
 
 <template>
   <Teleport to="body">
-    <Transition name="modal-fade">
+    <Transition :name="modalAnimation">
       <div
         v-if="store.modalState?.component"
         class="modal-wrapper"
@@ -52,6 +68,16 @@ function handleClose(data?: any) {
   transition: 0.25s ease all;
 }
 
+.bottom-to-top-enter-from,
+.bottom-to-top-leave-to {
+  bottom: 0;
+}
+
+.bottom-to-top-enter-active,
+.bottom-to-top-leave-active {
+  transition: 0.25s ease all;
+}
+
 .modal-wrapper {
   position: fixed;
   left: 0;
@@ -62,7 +88,7 @@ function handleClose(data?: any) {
   width: 100vw;
   height: 100vh;
 
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.6);
 
   display: grid;
   place-items: center;

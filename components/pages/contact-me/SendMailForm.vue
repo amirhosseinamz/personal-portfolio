@@ -24,6 +24,11 @@ watch(
   { immediate: true, deep: true },
 );
 
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
+
 async function submitForm() {
   if (
     !formData.value.userName.trim() ||
@@ -31,6 +36,9 @@ async function submitForm() {
     !formData.value.message.trim()
   ) {
     return toastStore.warning({ text: t("contactMe.completeFormWarning") });
+  }
+  if (!isValidEmail(formData.value.email)) {
+    return toastStore.error({ text: t("contactMe.invalidEmail") });
   }
   formIsLoading.value = true;
   const response: any = await useFetch("/api/contact", {
@@ -56,7 +64,7 @@ async function submitForm() {
 
 <template>
   <form
-    class="lg:max-w-[370px] max-lg:w-full mx-auto mt-[100px] max-lg:mt-12 px-5"
+    class="lg:max-w-[370px] max-lg:w-full mx-auto mt-[100px] max-xl:mt-[75px] max-lg:mt-12 px-5 max-lg:mb-16"
     @submit.prevent="submitForm"
   >
     <BaseInput
