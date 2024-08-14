@@ -31,7 +31,7 @@ function handleClose(data?: any) {
 }
 
 const modalAnimation = computed(() => {
-  return windowWidth.value > BreakpointsEnum.MD
+  return windowWidth.value > BreakpointsEnum.LG
     ? "modal-fade"
     : "bottom-to-top";
 });
@@ -39,6 +39,9 @@ const modalAnimation = computed(() => {
 
 <template>
   <Teleport to="body">
+    <Transition name="modal-fade">
+      <div v-if="store.modalState?.component" class="backdrop"></div>
+    </Transition>
     <Transition :name="modalAnimation">
       <div
         v-if="store.modalState?.component"
@@ -70,7 +73,7 @@ const modalAnimation = computed(() => {
 
 .bottom-to-top-enter-from,
 .bottom-to-top-leave-to {
-  bottom: 0;
+  transform: translateY(100%);
 }
 
 .bottom-to-top-enter-active,
@@ -82,15 +85,20 @@ const modalAnimation = computed(() => {
   position: fixed;
   left: 0;
   top: 0;
-
   z-index: 500;
-
   width: 100vw;
   height: 100vh;
-
-  background: rgba(0, 0, 0, 0.6);
-
   display: grid;
   place-items: center;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 499;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
 }
 </style>

@@ -48,6 +48,9 @@ async function submitForm() {
       email: formData.value.email,
       message: formData.value.message,
     },
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   formIsLoading.value = false;
   if (response.data.value.success) {

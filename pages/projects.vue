@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "#imports";
+import { onMounted, onUnmounted, ref, useI18n } from "#imports";
 import BaseAccordion from "~/components/base/BaseAccordion.vue";
 import ProjectsFilters from "~/components/pages/projects/ProjectsFilters.vue";
 import ProjectCard from "~/components/pages/projects/ProjectCard.vue";
@@ -10,38 +10,309 @@ import {
 } from "~/types/projects/projects";
 import { BreakpointsEnum } from "~/enums/breakpoints.enum";
 
+const { t } = useI18n();
+
 const projects = ref<ProjectFace[]>([
+  {
+    id: 2,
+    title: "_helpsy",
+    img: "/images/projects/helpsy-bg.jpg",
+    technologies: ["angular", "css", "bootstrap", "typescript", "html"],
+    description: t("projects.helpsyDescription", { br: `<br />` }),
+    gallery: [
+      {
+        id: 1,
+        largeImage: "/images/projects/helpsy-large-1.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-1.jpg",
+        alt: "image 1",
+      },
+      {
+        id: 2,
+        largeImage: "/images/projects/helpsy-large-2.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-2.jpg",
+        alt: "image 2",
+      },
+      {
+        id: 345,
+        largeImage: "/images/projects/helpsy-large-3.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-3.jpg",
+        alt: "image 345",
+      },
+      {
+        id: 45,
+        largeImage: "/images/projects/helpsy-large-4.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-4.jpg",
+        alt: "image 45",
+      },
+      {
+        id: 5,
+        largeImage: "/images/projects/helpsy-large-5.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-5.jpg",
+        alt: "image 5",
+      },
+      {
+        id: 6,
+        largeImage: "/images/projects/helpsy-large-6.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-6.jpg",
+        alt: "image 6",
+      },
+      {
+        id: 7,
+        largeImage: "/images/projects/helpsy-large-7.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-7.jpg",
+        alt: "image 7",
+      },
+      {
+        id: 8,
+        largeImage: "/images/projects/helpsy-large-8.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-8.jpg",
+        alt: "image 8",
+      },
+      {
+        id: 9,
+        largeImage: "/images/projects/helpsy-large-9.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-9.jpg",
+        alt: "image 9",
+      },
+      {
+        id: 10,
+        largeImage: "/images/projects/helpsy-large-10.jpg",
+        thumbnail: "/images/projects/helpsy-thumbnail-10.jpg",
+        alt: "image 10",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "_dr-kermani",
+    img: "/images/projects/drdiet-bg.jpg",
+    technologies: ["vue", "css", "bootstrap", "html"],
+    description: t("projects.drKermaniDescription", { br: `<br />` }),
+    gallery: [],
+  },
+  {
+    id: 4,
+    title: "_win-win",
+    img: "/images/projects/winwin-bg.jpg",
+    technologies: ["html", "css", "javascript", "tailwind"],
+    description: t("projects.winwinDescription", { br: `<br />` }),
+    gallery: [
+      {
+        id: 1,
+        largeImage: "/images/projects/winwin-large-1.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-1.jpg",
+        alt: "image 1",
+      },
+      {
+        id: 2,
+        largeImage: "/images/projects/winwin-large-2.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-2.jpg",
+        alt: "image 2",
+      },
+      {
+        id: 3,
+        largeImage: "/images/projects/winwin-large-3.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-3.jpg",
+        alt: "image 3",
+      },
+      {
+        id: 4,
+        largeImage: "/images/projects/winwin-large-4.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-4.jpg",
+        alt: "image 4",
+      },
+      {
+        id: 5,
+        largeImage: "/images/projects/winwin-large-5.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-5.jpg",
+        alt: "image 5",
+      },
+      {
+        id: 6,
+        largeImage: "/images/projects/winwin-large-6.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-6.jpg",
+        alt: "image 6",
+      },
+      {
+        id: 7,
+        largeImage: "/images/projects/winwin-large-7.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-7.jpg",
+        alt: "image 7",
+      },
+      {
+        id: 8,
+        largeImage: "/images/projects/winwin-large-8.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-8.jpg",
+        alt: "image 8",
+      },
+      {
+        id: 9,
+        largeImage: "/images/projects/winwin-large-9.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-9.jpg",
+        alt: "image 9",
+      },
+      {
+        id: 10,
+        largeImage: "/images/projects/winwin-large-10.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-10.jpg",
+        alt: "image 10",
+      },
+      {
+        id: 11,
+        largeImage: "/images/projects/winwin-large-11.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-11.jpg",
+        alt: "image 11",
+      },
+      {
+        id: 12,
+        largeImage: "/images/projects/winwin-large-12.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-12.jpg",
+        alt: "image 12",
+      },
+      {
+        id: 13,
+        largeImage: "/images/projects/winwin-large-13.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-13.jpg",
+        alt: "image 13",
+      },
+      {
+        id: 14,
+        largeImage: "/images/projects/winwin-large-14.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-14.jpg",
+        alt: "image 14",
+      },
+      {
+        id: 15,
+        largeImage: "/images/projects/winwin-large-15.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-15.jpg",
+        alt: "image 15",
+      },
+      {
+        id: 16,
+        largeImage: "/images/projects/winwin-large-16.jpg",
+        thumbnail: "/images/projects/winwin-thumbnail-16.jpg",
+        alt: "image 16",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "_saadat-holding",
+    img: "/images/projects/saadat-bg.jpg",
+    technologies: ["html", "css", "javascript", "tailwind"],
+    description: t("projects.saadatholdingDescription", { br: `<br />` }),
+    gallery: [
+      {
+        id: 1,
+        largeImage: "/images/projects/saadat-large-1.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-1.jpg",
+        alt: "image 1",
+      },
+      {
+        id: 2,
+        largeImage: "/images/projects/saadat-large-2.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-2.jpg",
+        alt: "image 2",
+      },
+      {
+        id: 3,
+        largeImage: "/images/projects/saadat-large-3.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-3.jpg",
+        alt: "image 3",
+      },
+      {
+        id: 4,
+        largeImage: "/images/projects/saadat-large-4.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-4.jpg",
+        alt: "image 4",
+      },
+      {
+        id: 5,
+        largeImage: "/images/projects/saadat-large-5.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-5.jpg",
+        alt: "image 5",
+      },
+      {
+        id: 6,
+        largeImage: "/images/projects/saadat-large-6.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-6.jpg",
+        alt: "image 6",
+      },
+      {
+        id: 7,
+        largeImage: "/images/projects/saadat-large-7.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-7.jpg",
+        alt: "image 7",
+      },
+      {
+        id: 8,
+        largeImage: "/images/projects/saadat-large-8.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-8.jpg",
+        alt: "image 8",
+      },
+      {
+        id: 9,
+        largeImage: "/images/projects/saadat-large-9.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-9.jpg",
+        alt: "image 9",
+      },
+      {
+        id: 10,
+        largeImage: "/images/projects/saadat-large-10.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-10.jpg",
+        alt: "image 10",
+      },
+      {
+        id: 11,
+        largeImage: "/images/projects/saadat-large-11.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-11.jpg",
+        alt: "image 11",
+      },
+      {
+        id: 12,
+        largeImage: "/images/projects/saadat-large-12.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-12.jpg",
+        alt: "image 12",
+      },
+      {
+        id: 13,
+        largeImage: "/images/projects/saadat-large-13.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-13.jpg",
+        alt: "image 13",
+      },
+      {
+        id: 14,
+        largeImage: "/images/projects/saadat-large-14.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-14.jpg",
+        alt: "image 14",
+      },
+      {
+        id: 15,
+        largeImage: "/images/projects/saadat-large-15.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-15.jpg",
+        alt: "image 15",
+      },
+      {
+        id: 16,
+        largeImage: "/images/projects/saadat-large-16.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-16.jpg",
+        alt: "image 16",
+      },
+      {
+        id: 17,
+        largeImage: "/images/projects/saadat-large-17.jpg",
+        thumbnail: "/images/projects/saadat-thumbnail-17.jpg",
+        alt: "image 17",
+      },
+    ],
+  },
   {
     id: 1,
     title: "_limoo",
-    img: "/images/projects/project-1.jpg",
+    img: "/images/projects/limoo-bg.jpg",
     technologies: ["html", "css", "javascript", "vue"],
-    description:
-      "Limoo is the best project that i have worked and the interesting thing about that is this project is my first project that i started that in PARSDATA company as my first job...",
-  },
-  {
-    id: 2,
-    title: "_dr-kermani",
-    img: "/images/projects/project-1.jpg",
-    technologies: ["html", "css", "javascript", "vue", "bootstrap"],
-    description:
-      "DRKERMANI is the best project that i have worked and the interesting thing about that is this project is my first project that i started that in PARSDATA company as my first job...",
-  },
-  {
-    id: 3,
-    title: "_win-win",
-    img: "/images/projects/project-1.jpg",
-    technologies: ["html", "css", "javascript", "tailwind"],
-    description:
-      "WINWIN is the best project that i have worked and the interesting thing about that is this project is my first project that i started that in PARSDATA company as my first job...",
-  },
-  {
-    id: 3,
-    title: "_saadat-holding",
-    img: "/images/projects/project-1.jpg",
-    technologies: ["html", "css", "javascript", "tailwind"],
-    description:
-      "HOLDING is the best project that i have worked and the interesting thing about that is this project is my first project that i started that in PARSDATA company as my first job...",
+    description: t("projects.limooDescription", { br: `<br />` }),
+    gallery: [],
   },
 ]);
 const filteredProjects = ref<ProjectFace[] | null>();

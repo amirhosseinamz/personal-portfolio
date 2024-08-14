@@ -10,12 +10,20 @@ export type technologies =
   | "tailwind"
   | "bootstrap";
 
+interface IImage {
+  id: number;
+  alt: string;
+  largeImage: string;
+  thumbnail: string;
+}
+
 export interface ProjectFace {
   id: number;
   title: string;
   img: string;
   description: string;
   technologies: technologies[];
+  gallery: IImage[];
 }
 
 export interface TechnologyFace {

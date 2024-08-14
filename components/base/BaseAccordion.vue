@@ -3,7 +3,7 @@ import { ref, onMounted } from "#imports";
 
 interface PropsFace {
   title: string;
-  openedDefault: boolean;
+  openedDefault?: boolean;
   theme?: "dark" | "light";
   contentClass?: string;
 }

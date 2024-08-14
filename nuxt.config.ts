@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     strict: true,
     shim: false,
   },
-  plugins: [{ src: "~/plugins/vue3-text-clamp.client.ts", mode: "client" }],
+  plugins: [],
   modules: ["@nuxtjs/i18n", "@pinia/nuxt"],
   app: {
     head: {

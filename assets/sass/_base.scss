@@ -49,8 +49,8 @@ html {
 }
 
 .modal_mobile-mode {
-  @apply max-md:fixed max-md:bottom-0;
-  @media only screen and (max-width: 768px) {
+  @apply max-lg:fixed max-lg:bottom-0;
+  @media only screen and (max-width: 1024px) {
     width: 100% !important;
   }
 }
