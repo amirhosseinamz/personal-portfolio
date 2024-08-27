@@ -19,6 +19,7 @@ export type TIconName =
   | "telegram"
   | "github"
   | "code-details"
+  | "close-modal"
   | "folder-icon";
 
 const props = defineProps<{ name: TIconName }>();

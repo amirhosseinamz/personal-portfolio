@@ -10,4 +10,5 @@ export const iconMapping = {
   instagram: () => import("/assets/icons/instagram.svg"),
   readme: () => import("/assets/icons/readme.svg"),
   "code-details": () => import("/assets/icons/code-details.svg"),
+  "close-modal": () => import("/assets/icons/close-modal.svg"),
 };

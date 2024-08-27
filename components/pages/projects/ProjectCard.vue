@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import BaseButton from "~/components/base/BaseButton.vue";
 import { ProjectFace } from "~/types/projects/projects";
+import useModalStore from "~/stores/useModalStore";
+import ProjectDetailsModal from "~/components/pages/projects/ProjectDetailsModal.vue";
+import { nextTick, onMounted } from "#imports";
+
+const modalStore = useModalStore();
 
 interface PropsFace {
   data: ProjectFace;
@@ -8,6 +13,21 @@ interface PropsFace {
 }
 
 const props = withDefaults(defineProps<PropsFace>(), {});
+
+function openDetailsModal() {
+  modalStore.openModal({
+    component: ProjectDetailsModal,
+    props: {
+      images: props.data.gallery,
+      description: props.data.description,
+      title: props.data.title,
+    },
+  });
+}
+
+onMounted(async () => {
+  // await nextTick();
+});
 </script>
 
 <template>
@@ -27,11 +47,14 @@ const props = withDefaults(defineProps<PropsFace>(), {});
       </div>
       <div class="content">
         <div class="description">
-          <ClientOnly>
-            <text-clamp :text="props.data.description" :max-lines="3" />
-          </ClientOnly>
+          <p class="ellipsis">
+            {{ props.data.description }}
+          </p>
         </div>
-        <BaseButton mode="dark" class="max-2xl:text-base"
+        <BaseButton
+          mode="dark"
+          class="max-2xl:text-base"
+          @click="openDetailsModal"
           >view-project
         </BaseButton>
       </div>
@@ -55,5 +78,15 @@ const props = withDefaults(defineProps<PropsFace>(), {});
       @apply text-lg max-2xl:text-base mb-5;
     }
   }
+}
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  max-height: calc(1.5em * 3);
 }
 </style>

@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
+  console.log("Request Body:", body); // Log the request body
+
   const { name, email, message } = body;
   const config = useRuntimeConfig();
 
@@ -24,8 +26,8 @@ export default defineEventHandler(async (event) => {
   try {
     await transporter.sendMail(mailOptions);
     return { success: true };
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return { success: false, error };
+  } catch (error: any) {
+    console.error("Error sending email:", error); // Log the error
+    return { success: false, error: error.message || "Unknown error" };
   }
 });
